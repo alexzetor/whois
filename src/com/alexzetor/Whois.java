@@ -14,7 +14,7 @@ public class Whois {
         int PORT;
 
         //Socket s = new Socket(URL, PORT);
-        Socket s = new Socket("whois.2ip.ru", 80);
+        Socket s = new Socket("whois.internic.net", 43);
 
         InputStream in = s.getInputStream();
         OutputStream out = s.getOutputStream();
@@ -23,7 +23,11 @@ public class Whois {
         String str = (args.length == 0 ? "yandex.ru" : args[0]) + "\n";
 
         byte buf[] = str.getBytes();
-         out.write(buf);
+
+        String toStr = new String(buf);
+        System.out.println("Byte is " + toStr);
+
+        out.write(buf);
 
         while ((c = in.read()) != -1) {
             System.out.print((char) c);
